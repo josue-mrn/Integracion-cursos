@@ -40,13 +40,13 @@ En la logística de envíos exprés, cada paquete no es un dato escalar plano, s
 
 ### d. Aplicación
 Un paquete con forma de paralelepípedo recto se define a partir de un vértice de referencia en el origen y tres vectores de arista:
-$$\vec{u} = \begin{pmatrix} largo \\ 0 \\ 0 \end{pmatrix}, \quad \vec{v} = \begin{pmatrix} 0 \\ ancho \\ 0 \end{pmatrix}, \quad \vec{w} = \begin{pmatrix} 0 \\ 0 \\ alto \end{pmatrix}$$
+$\vec{u} = \begin{pmatrix} largo \\ 0 \\ 0 \end{pmatrix}, \quad \vec{v} = \begin{pmatrix} 0 \\ ancho \\ 0 \end{pmatrix}, \quad \vec{w} = \begin{pmatrix} 0 \\ 0 \\ alto \end{pmatrix}$
 
 En Álgebra Lineal, el volumen $V$ del paralelepípedo generado por tres vectores en $\mathbb{R}^3$ equivale al valor absoluto del **producto triple escalar**, el cual es idéntico al determinante de la matriz que tiene a dichos vectores por filas o columnas:
-$$V = |\vec{u} \cdot (\vec{v} \times \vec{w})| = \left| \det \begin{pmatrix} u_x & u_y & u_z \\ v_x & v_y & v_z \\ w_x & w_y & w_z \end{pmatrix} \right|$$
+$V = |\vec{u} \cdot (\vec{v} \times \vec{w})| = \left| \det \begin{pmatrix} u_x & u_y & u_z \\ v_x & v_y & v_z \\ w_x & w_y & w_z \end{pmatrix} \right|$
 
 En la implementación del proyecto (`include/transacciones.h`, funciones `calcularVolumenM3` y `calcularPesoVolumetrico`), este determinante se evalúa y se normaliza a las unidades operativas:
-$$V_{m^3} = \frac{|\det(M)|}{1{,}000{,}000}, \quad \text{Peso Volumétrico (kg)} = \frac{|\det(M)|}{5{,}000}$$
+$V_{m^3} = \frac{|\det(M)|}{1{,}000{,}000}, \quad \text{Peso Volumétrico (kg)} = \frac{|\det(M)|}{5{,}000}$
 
 ### e. Resultado esperado
 Obtención analítica exacta del volumen espacial del paquete y su peso volumétrico derivado del determinante, asegurando que el proceso de despacho (`Despachos::procesarDespacho`) verifique de forma consistente que la sumatoria acumulada de volúmenes de las guías no supere la capacidad del vehículo.
